@@ -24,7 +24,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="connexion")
+     * @Route("/login", name="login")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function login(){
