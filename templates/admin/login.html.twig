@@ -8,14 +8,14 @@
 
     <form action="" method="post">
         <div class="form-group">
-            <input type="text" placeholder="Votre identifiant" name="_username" required>
+            <label for="username">Votre identifiant</label>
+            <input id="username" type="text" class="form-control" name="_username" required>
         </div>
         <div class="form-group">
-            <input type="text"  placeholder="Votre identifiant" name="_password" required>
+            <label for="username">Votre mot de passe</label>
+            <input id="password" type="text" class="form-control" name="_password" required>
         </div>
-        <div class="form-group">
             <button class="btn btn-primary float-right">Connexion</button>
-        </div>
     </form>
 
 {% endblock %}
