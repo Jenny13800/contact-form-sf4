@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-3">Messages</h1>
+
+    <section>
+        {%  for message in messages %}
+            <div class="border border-secondary rounded p-3 m-2">
+                <p><span class="text-primary">Auteur :</span> {{ message.prenom }} {{ message.nom }} </p>
+                <p><span class="text-primary">Email :</span> {{ message.email }}</p>
+                <p><span class="text-primary">Ecrit le :</span> {{ message.createdAt | date('d/m/Y') }} à {{ message.createdAt | date('H:i') }}</p>
+                <p><span class="text-primary">Message :</span> {{ message.message }}</p>
+                <p></p>
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}
