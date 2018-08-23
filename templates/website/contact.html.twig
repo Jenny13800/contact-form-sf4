@@ -1,9 +1,16 @@
 {%  extends 'base.html.twig' %}
 
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {% block title %}Contact{% endblock %}
 
 {% block body %}
 
     <h1 class="text-center mt-3">Contactez-nous</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary float-right">Envoyer</button>
+    {{ form_end(form) }}
 
 {% endblock %}
