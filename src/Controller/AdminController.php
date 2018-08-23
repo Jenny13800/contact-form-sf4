@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\MessageRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -10,12 +11,12 @@ class AdminController extends AbstractController
 {
     /**
      * @Route("/messages", name="messages")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(MessageRepository $repository)
     {
         // récupère les messages du plus récent au plus ancien
         $messages = $repository->findByDate();
-        dump($messages);
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
@@ -35,4 +36,5 @@ class AdminController extends AbstractController
      * @Route("/logout", name="logout")
      */
     public function logout(){}
+
 }
