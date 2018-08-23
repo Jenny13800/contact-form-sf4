@@ -46,6 +46,11 @@ class Message
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $treatedAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,4 +127,17 @@ class Message
 
         return $this;
     }
+
+    public function getTreatedAt(): ?\DateTimeInterface
+    {
+        return $this->treatedAt;
+    }
+
+    public function setTreatedAt(\DateTimeInterface $treatedAt): self
+    {
+        $this->treatedAt = $treatedAt;
+
+        return $this;
+    }
+
 }
