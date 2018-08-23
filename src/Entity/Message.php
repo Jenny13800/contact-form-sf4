@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
@@ -28,11 +29,13 @@ class Message
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(message="Vous devez entrer une adresse email")
      */
     private $email;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=20, minMessage="Votre message doit faire au minimum 20 caractères")
      */
     private $message;
 
