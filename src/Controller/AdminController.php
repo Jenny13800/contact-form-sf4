@@ -30,4 +30,9 @@ class AdminController extends AbstractController
     public function login(){
         return $this->render('admin/login.html.twig');
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(){}
 }
