@@ -19,6 +19,15 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
+    public function findByDate()
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Message[] Returns an array of Message objects
 //     */
