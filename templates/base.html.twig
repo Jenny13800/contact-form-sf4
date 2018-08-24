@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Website{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -47,8 +48,9 @@
             {% block body %}{% endblock %}
         </div>
         <footer class="bg-primary text-white">
-            <p class="p-2 text-center">Symfony 4</p>
+            <p class="p-2 text-center mb-0">Symfony 4</p>
         </footer>
         {% block javascripts %}{% endblock %}
+        <script src="{{ asset('build/app.js') }}"></script>
     </body>
 </html>

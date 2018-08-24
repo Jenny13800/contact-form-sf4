@@ -1,0 +1,12 @@
+$color: white;
+
+body {
+    background-color: $color;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
