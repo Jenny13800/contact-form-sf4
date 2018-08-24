@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\ContactType;
+use App\Repository\MessageRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,10 +32,11 @@ class WebsiteController extends AbstractController
 
         $form = $this->createForm(ContactType::class, $message);
 
+        // analyse la requête HTTP
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-
+            // ajout date et valeur false au champ treated
             $message->setIsTreated(false)
                     ->setCreatedAt(new \DateTime());
 

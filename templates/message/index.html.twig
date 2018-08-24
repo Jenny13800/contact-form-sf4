@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-3 mb-3">Messages</h1>
+
+    <section>
+        <p class="alert alert-warning text-center mb-2">Les messages sont classés du plus récent au plus ancien</p>
+        {%  for message in messages %}
+            <div class="border border-secondary rounded p-3 mb-2">
+                <p><span class="text-primary">Auteur :</span> {{ message.prenom }} {{ message.nom }} </p>
+                <p><span class="text-primary">Email :</span> {{ message.email }}</p>
+                <p><span class="text-primary">Ecrit le :</span> {{ message.createdAt | date('d/m/Y') }} à {{ message.createdAt | date('H:i') }}</p>
+                <p><span class="text-primary">Message :</span> {{ message.message }}</p>
+                <form action="{{ path('traitement', {'id': message.id}) }}" method="post">
+                    <div class="mb-3">
+                        <input type="radio" name="traite" value="non-traite" {% if not message.isTreated %} checked {% endif %}> Non traité
+                        <input type="radio" name="traite" value="traite" {% if message.isTreated %} checked {% endif %}>
+                        Traité
+                        {% if message.treatedAt %}
+                            le <span class="text-success">{{ message.treatedAt | date('d/m/Y') }} à {{ message.treatedAt | date('H:i') }}</span>
+                        {% endif %}
+                        <p></p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

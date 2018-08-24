@@ -8,22 +8,26 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">ACSEO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
+
+                    {%  if is_granted("ROLE_ADMIN") == true %}
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin') }}">Accueil Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('message') }}">Messages</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
                     </li>
-                    {%  if is_granted("ROLE_ADMIN") == true %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('messages') }}">Messages</a>
-                    </li>
                     {% endif %}
-
                     {% if not app.user %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('contact') }}">Contact</a>
@@ -42,6 +46,9 @@
         <div class="container">
             {% block body %}{% endblock %}
         </div>
+        <footer class="bg-primary text-white">
+            <p class="p-2 text-center">Symfony 4</p>
+        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
